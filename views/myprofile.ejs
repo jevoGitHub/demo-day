@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Eventful</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="myprofile.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header text-center">
+      <h1><img src="img/connect.png" alt="API Icon">Your Connections</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <a href="/connect" class="btn btn-default btn-sm">Connect Page</a>
+      <a href="/mysetting" class="btn btn-default btn-sm">Settings</a>
+    </div>
+
+    <div class="col-sm-6">
+          <h3>
+            Saved
+          </h3>
+      
+      <% for(var j=0; j < saved.length; j++) { %>
+        <% if (user.local.email === saved[j].user ) { %>
+          <section>
+            <button class="trash">Clear</button>
+            <h2 id="saved">
+              <strong>
+                <%= saved[j].name %>
+              </strong>
+            </h2>
+
+            <ul>
+              <% if (saved[j].link) { %>
+                <li>LinkedIn: <a>
+                    <%= saved[j].link %>
+                  </a></li>
+                <% } %>
+                  <% if (saved[j].git) { %>
+                    <li>GitHub: <a>
+                        <%= saved[j].git %>
+                      </a></li>
+                    <% } %>
+                      <% if (saved[j].twit) { %>
+                        <li>Twitter: <a>
+                            <%= saved[j].twit %>
+                          </a></li>
+                        <% } %>
+                          <% if (saved[j].chat) { %>
+                            <li>Coffee Chats: <%= saved[j].chat %>
+                            </li>
+                            <% } %>
+            </ul>
+            
+          </section>
+          <% } %>
+          <% } %>
+        </div>
+
+    <div class="col-sm-6">
+      <h3>
+        <%= messages.length %> User(s) Found
+      </h3>
+
+      <% for(var i=0; i < messages.length; i++) { %>
+        <section>
+          <h2>
+            <strong>
+              <%= messages[i].name %>
+            </strong>
+          </h2>
+
+          <% for(var j=0; j < socials.length; j++) { if (messages[i].name===socials[j].name) { %>
+            <ul>
+              <% if (socials[j].link) { %>
+                <li>LinkedIn: <a href="<%= socials[j].link %>" target="_blank">
+                    <%= socials[j].link %>
+                  </a></li>
+                <% } %>
+                  <% if (socials[j].git) { %>
+                    <li>GitHub: <a href="<%= socials[j].git %>" target="_blank">
+                        <%= socials[j].git %>
+                      </a></li>
+                    <% } %>
+                      <% if (socials[j].twit) { %>
+                        <li>Twitter: <a href="<%= socials[j].twit %>" target="_blank">
+                            <%= socials[j].twit %>
+                          </a></li>
+                        <% } %>
+                          <% if (socials[j].chat) { %>
+                            <li>Coffee Chats: <%= socials[j].chat %>
+                            </li>
+                            <% } %>
+            </ul>
+            <% } } %>
+
+              <form action="/saved" method="POST">
+                <input type="hidden" name="user" value="<%= user.local.email %>">
+                <input type="hidden" name="name" value="<%= messages[i].name %>">
+                <% for (var j=0; j < socials.length; j++) { if (messages[i].name===socials[j].name) { %>
+                  <input type="hidden" name="link" value="<%= socials[j].link %>">
+                  <input type="hidden" name="git" value="<%= socials[j].git %>">
+                  <input type="hidden" name="twit" value="<%= socials[j].twit %>">
+                  <input type="hidden" name="chat" value="<%= socials[j].chat %>">
+                  <% } } %>
+                    <button>Save</button>
+              </form>
+        </section>
+        <% } %>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

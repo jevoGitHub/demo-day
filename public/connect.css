@@ -1,0 +1,281 @@
+.hidden {
+  display: none;
+}
+
+body {
+  border: 0;
+}
+
+/*
+  ==================================================
+  Global Stylings
+  ==================================================
+  */
+html {
+  text-align: center;
+  border: none;
+}
+
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
+  padding-top: 0;
+  background: linear-gradient(95.2deg, rgba(173, 252, 234, 1) 26.8%, rgba(192, 229, 246, 1) 64%);
+}
+
+div.container {
+  width: 100%;
+  padding: 0;
+}
+
+/*
+  ==================================================
+  Layout
+  ==================================================
+  */
+header {
+  height: 125px;
+  margin: 0;
+}
+
+h1 {
+  color: white;
+  font-size: 5rem;
+  height: 135px;
+  background: linear-gradient(rgb(0, 0, 0), rgb(52, 155, 255), rgb(0, 0, 0));
+}
+
+h2 {
+  margin-top: 100px;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.well {
+  height: 125px;
+  border: none;
+  z-index: 1;
+}
+
+.interface {
+  margin-bottom: 0;
+}
+
+.row {
+  margin: none;
+}
+
+p {
+  font-size: 2rem;
+  margin-top: 40px;
+}
+
+/*
+  ==================================================
+  Sign In/Up Layout
+  ==================================================
+  */
+a[href="/login"],
+a[href="/signup"] {
+  margin: auto;
+  margin-top: 15px;
+  width: 10%;
+  display: block;
+}
+
+a[href="/logout"],
+a[href="/mysetting"],
+button {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+/*
+  ==================================================
+  Connect Page Structure
+  ==================================================
+  */
+
+li {
+  list-style-type: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+.message {
+  margin-bottom: 40px;
+}
+
+#map {
+  margin: auto;
+  display: block;
+  margin-top: 30px;
+}
+
+/*
+  ==================================================
+  Stylings
+  ==================================================
+  */
+button {
+  color: rgb(52, 155, 255);
+  font-size: 1rem;
+}
+
+h1 {
+  font-family: "bungee shade";
+  letter-spacing: 10px;
+  padding-top: 5px;
+}
+
+.reply {
+  color: rgb(208, 22, 22);
+  font-size: 1.1rem;
+  margin-left: 10px;
+}
+
+.reply:hover {
+  color: rgb(52, 155, 255);
+  cursor: pointer;
+}
+
+input {
+  height: 30px;
+  width: 40%;
+}
+
+input[readonly] {
+  display: none;
+}
+
+#comments {
+  text-decoration: underline;
+}
+
+#map {
+  width: 50%;
+  border: 8px groove rgb(6, 6, 6);
+}
+
+a[href="/logout"],
+a[href="/mysetting"] {
+  color: rgb(52, 155, 255);
+}
+
+#comments {
+  font-size: 3rem;
+}
+
+h2:hover {
+  cursor: pointer;
+}
+
+/*
+  ==================================================
+  Imported Stylings
+  ==================================================
+  */
+.msg-board {
+  --b: 3px;
+  /* border thickness */
+  --s: 8px;
+  /* size of the dashes */
+  --c1: rgb(75, 81, 79);
+  --c2: #080808;
+  background-color: white;
+  width: 65%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 200px;
+  position: relative;
+  padding: 20px;
+  min-width: 200px;
+  ;
+}
+
+.msg-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: var(--b);
+  background:
+    repeating-conic-gradient(var(--c1) 0 25%, var(--c2) 0 50%) 0 0/var(--s) var(--s) round;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.center {
+  position: absolute;
+  top:16%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.center2 {
+  position: absolute;
+  top:25%;
+  left:-50%;
+  transform: translate(-50%,-50%);
+}
+.center3 {
+  position: absolute;
+  top:15%;
+  left:200%;
+  transform: translate(-50%,-50%);
+}
+
+#cloud {
+  background: rgba(255, 255, 255);
+  width: 358px; 
+  height: 118px;
+  border-radius: 150px;	
+  box-shadow: 10px 10px rgba(0,0,0,0.2);
+  animation: move 8s infinite;
+  position: relative;
+}
+
+#cloud:after {
+  content: '';
+  background: rgba(255, 255, 255);
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: -50px;
+  left: 50px;
+  z-index: -1;
+}
+
+#cloud:before {
+  content: '';
+  background: rgba(255, 255, 255);
+  position: absolute;
+  width: 170px;
+  height: 150px;
+  border-radius: 50%;
+  top: -90px;
+  right: 40px;
+  z-index: -1;
+}
+
+@keyframes move {
+  0% {
+    transform: translatex(0);
+  }
+  50% {
+    transform: translatex(-40px);
+  }
+}
+/*
+  ==================================================
+  Media Queries
+  ==================================================
+  */

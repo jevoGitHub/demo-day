@@ -1,0 +1,113 @@
+/*
+========================================================
+Global
+========================================================
+*/
+body {
+    padding-top: 30px;
+    word-wrap: break-word;
+    background: linear-gradient(95.2deg, rgba(173, 252, 234, 1) 26.8%, rgba(192, 229, 246, 1) 64%);
+}
+
+.fa-trash:before {
+    content: '\f00d'
+}
+
+/*
+  ========================================================
+  Main Layout
+  ========================================================
+  */
+img {
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+section {
+    border: 2px dashed black;
+    padding: 20px;
+    margin: 50px;
+    margin-top: 10px;
+    float: left;
+    width: 90%;
+    background: linear-gradient(95.2deg, rgb(182, 222, 222) 26.8%, rgb(117, 163, 192) 64%);
+}
+
+li {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+}
+
+span {
+    font-size: 1.3rem;
+    color: red;
+}
+
+span:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+}
+
+.col-sm-6 {
+    width: 100%;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+#save-profile:hover {
+    color: rgb(52, 155, 255)
+}
+
+form {
+    font-size: 2rem;
+}
+
+label {
+    margin-bottom: 20px;
+}
+
+input {
+    font-size: 1.7rem;
+    width: 100%;
+    border: 1px solid gray;
+    margin-bottom: 50px;
+}
+
+input[type="radio"] {
+    display: inline-block;
+    width: 5%;
+}
+
+button {
+    display: block;
+}
+
+#socials {
+    margin-top: 15px;
+}
+
+/*
+  ========================================================
+  Stylings
+  ========================================================
+*/
