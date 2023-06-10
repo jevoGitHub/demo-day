@@ -15,7 +15,9 @@
             <div class="center">
                 <% if (user.local.email) { %>
                     <div id="cloud">
-                        <h3 class="interface"><strong>Welcome</strong> <%= user.local.email %><br></h3>
+                        <h3 class="interface"><strong>Welcome</strong>
+                            <%= user.local.email %><br>
+                        </h3>
                         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
                         <a href="/mysetting" class="btn btn-default btn-sm">Settings</a>
                         <% } else { %>
@@ -31,32 +33,22 @@
             </div>
         </header>
 
+        <h2> <div class="map hidden" id="map" style="height: 400px;"></div> </h2>
+        
         <div class="row">
             <div>
-                <a id="location">
-                    <h2>> Connect < </h2>
-                </a>
-                <div class="hidden map" id="map" style="height: 400px;"></div>
-                <a href="/myprofile">
-                    <p>> Create Gather Round < </p>
-                </a>
                 <section class="msg-board">
-                    <ul class="messages">
-                        <li id="comments">See What's Happening In The Area</li>
-
-
-                        <!-- var location = "42.0789268,-71.0040655" -->
+                    <ul id="comments" class="messages">
+                        <h3>See What's Happening In The Area</h3>
 
                         <% for(var i=0; i<messages.length; i++) {%>
 
-                            <!-- if (messages[i].location === location ) -->
-
                             <li class="message">
                                 <span><strong>
-                                        <%= messages[i].name %>:
+                                        <%= messages[messages.length - (i + 1)].name %>:
                                     </strong></span>
                                 <span>
-                                    <%= messages[i].msg %>
+                                    <%= messages[messages.length - (i + 1)].msg %>
                                 </span><br>
                                 <ul>
                                     <% for(var j=0; j< messages[i].replies.length; j++) {%>
@@ -81,23 +73,29 @@
                             </li>
                             <% } %>
                     </ul>
-                    <!-- }  -->
 
                     <% if (user.local.email) { %>
                         <form id="messageForm" action="/messages" method="POST">
                             <input type="text" value="<%= user.local.email %>" name="name" readonly>
-                            <input type="text" placeholder="message" name="msg" maxlength="200">
+                            <input type="text" placeholder="Enter Message" name="msg" maxlength="200">
                             <% } %>
-                                <input type="hidden" id="location-input" name="location" value="">
+                                <input type="hidden" id="latitude-input" name="latitude" value="">
+                                <input type="hidden" id="longitude-input" name="longitude" value="">
                                 <button type="submit">Submit</button>
                         </form>
+                        <div class="wrapper">
+                            <span class="square">
+                                <a class="tenth before after" href="/myprofile">
+                                    - Create Gather Round -
+                                </a>
+                            </span>
+                        </div>
+                </section>
             </div>
-            </section>
-        </div>
 
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=[apikey]&libraries=places"></script>
-        <script src="main.js"></script>
+            <script src='<%= process.env.API_KEY %>'></script>
+            <script src="location.js"></script>
+            <script src="main.js"></script>
 </body>
 
 </html>

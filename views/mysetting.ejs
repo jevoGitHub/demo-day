@@ -10,68 +10,63 @@
 
 <body>
     <div class="container">
-        <div class="page-header text-center">
-            <h1><img src="img/connect.png" alt="API Icon">Settings</h1>
-            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-            <a href="/connect" class="btn btn-default btn-sm">Connect Page</a>
-            <a href="/myprofile" class="btn btn-default btn-sm">Gather Round</a>
-        </div>
+        <header>
+            <img src="img/connect.png" alt="API Icon">
+            <div class="page-header text-center">
+              <h1 class="logo">My Settings</h1>
+              <ul class="slider-menu">
+              <li><a href="/logout" class="btn btn-default btn-sm">Logout</a></li>
+              <li><a href="/connect" class="btn btn-default btn-sm">Connect Page</a></li>
+              <li><a href="/myprofile" class="btn btn-default btn-sm">Gather Round</a></li>
+            </ul>
+            </div>
+          </header>
+                
 
-
-        <div class="col-sm-6">
-
-
-        </div>
+        <main>
     </div>
 
     <div class="col-sm-6">
 
         <% if (user.local.email) { %>
-        <section>
+            <section>
 
-            <h2>Hi <%= user.local.email %>!</h2>
-            <form action="/socials" method="POST">
-                <input type="hidden" value="<%= user.local.email %>" name="name">
-                
-                <label>LinkedIn</label>
-                <input type="text" name="link" 
-                    <% for(var i=0; i<socials.length; i++) {
-                        if (socials[i].name === user.local.email) {
-                    %>
+                <h2>Hi <%= user.local.email %>!</h2>
+                <form action="/socials" method="POST">
+                    <input type="hidden" value="<%= user.local.email %>" name="name">
+
+                    <label>LinkedIn:</label>
+                    <input type="text" name="link" <% for(var i=0; i<socials.length; i++) { if
+                        (socials[i].name===user.local.email) { %>
                     placeholder="<%= socials[i].link %>">
-                    <% break; }
-                    } %>
-    
-                <label>GitHub</label>
-                <input type="text" name="git" 
-                    <% for(var i=0; i<socials.length; i++) {
-                        if (socials[i].name === user.local.email) {
-                    %>
-                    placeholder="<%= socials[i].git %>">
-                    <% break; }
-                    } %>
-    
-                <label>Twitter</label>
-                <input type="text" name="twit" 
-                    <% for(var i=0; i<socials.length; i++) {
-                        if (socials[i].name === user.local.email) {
-                    %>
-                    placeholder="<%= socials[i].twit %>">
-                    <% break; }
-                    } %>
-    
-                <label>Coffee Chats</label>
-                <input type="radio" name="chat" value="Yes"> Yes
-                <input type="radio" name="chat" value="No"> No
-                <button id="socials" >Save</button>
-            </form>
+                        <% break; } } %>
 
-        </section>
-        <% } %>
+                            <label>GitHub:</label>
+                            <input type="text" name="git" <% for(var i=0; i<socials.length; i++) { if
+                                (socials[i].name===user.local.email) { %>
+                            placeholder="<%= socials[i].git %>">
+                                <% break; } } %>
+
+                                    <label>Twitter:</label>
+                                    <input type="text" name="twit" <% for(var i=0; i<socials.length; i++) { if
+                                        (socials[i].name===user.local.email) { %>
+                                    placeholder="<%= socials[i].twit %>">
+                                        <% break; } } %>
+
+                                            <label>Coffee Chats:</label>
+                                            <input type="radio" name="chat" value="Yes"> Yes
+                                            <input type="radio" name="chat" value="No"> No
+                                            <button id="socials">Save</button>
+                </form>
+
+            </section>
+            <% } %>
     </div>
     </div>
+    </main>
 
     <script src="main.js"></script>
+    <script src="myprofile.js"></script>
 </body>
 
 </html>

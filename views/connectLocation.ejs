@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventful</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="agreement.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <section>
+      <h1>Welcome to Eventful!</h1>
+      <p>To provide you with personalized and location-specific features, we kindly request your permission to access your device's location.</p>
+
+      <h2>Why do we need your location?</h2>
+      <p>By granting location access, you allow our app to tailor its services to your specific needs like:</p>
+      <ol>
+        <li>Real-Time Events: We search for current activities based on your location, such as nearby events, meetings, or points of interest.</li>
+        <li>Improved Navigation: With location access, we can enhance our navigation features, helping you find the quickest and most efficient routes to your destinations.</li>
+        <li>Localized Notifications: By knowing your location, we can send you timely and relevant notifications about special offers, promotions, or events happening in your area.</li>
+      </ol>
+
+      <p id="break">
+        <strong>We want to emphasize that your privacy and data security are of utmost importance to us. Rest assured that your location information will only be used within the app's context and will not be shared with any third parties without your explicit consent. Our app adheres to strict privacy policies and regulations to ensure the confidentiality of your personal information.</strong>
+      </p>
+
+      <h2>To grant location access on mobile, please follow the instructions below:</h2>
+
+      <div class="instructions">
+        <h3>For iOS devices:</h3>
+        <ol>
+          <li>Open the "Settings" app on your device.</li>
+          <li>Scroll down and tap on "Eventful."</li>
+          <li>Select "Location" and choose either "While Using the App" or "Always" to grant permission.</li>
+        </ol>
+      </div>
+
+      <div class="instructions">
+        <h3>For Android devices:</h3>
+        <ol>
+          <li>Open the "Settings" app on your device.</li>
+          <li>Tap on "Apps" or "Application Manager" (depending on your device).</li>
+          <li>Locate and select "Eventful."</li>
+          <li>Tap on "Permissions" and enable the "Location" permission.</li>
+        </ol>
+      </div>
+
+      <p>Thank you for your attention and understanding. Should you have any questions or concerns regarding this request, please don't hesitate to contact our support team at johnjevora94@gmail.com. We value your continued support and look forward to providing you with an enhanced app experience.</p>
+      <p id="sign-off">Best regards,<br>Eventful</p>
+    </section>
+  </div>
+
+  <script>
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(position, latitude, longitude)
+        window.location.href = `/connect?latitude=${latitude}&longitude=${longitude}`;
+      });
+    }
+  </script>
+
+</body>
+
+</html>

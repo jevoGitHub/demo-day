@@ -1,3 +1,4 @@
+require('dotenv').config()
 module.exports = function (app, passport, db) {
   const ObjectID = require('mongodb').ObjectID
   // normal routes ===============================================================
@@ -9,7 +10,12 @@ module.exports = function (app, passport, db) {
 
   // Event SECTION =========================
   app.get('/connect', isLoggedIn, function (req, res) {
+    console.log(req.query)
     db.collection('messages').find({}).toArray((err, result) => {
+      result = result.filter(message => {
+        const distance = calculateDistance(message.lat, message.lon, parseFloat(req.query.latitude), parseFloat(req.query.longitude))
+        return distance <= 5
+      })
       if (err) return console.log(err)
       res.render('connect.ejs', {
         user: req.user,
@@ -29,8 +35,29 @@ module.exports = function (app, passport, db) {
 
   // message board routes ===============================================================
 
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+  
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in kilometers
+  
+    return distance;
+  }
+  
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+
   app.post('/messages', (req, res) => {
-    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, replies: [], location: req.body.location }, (err, result) => {
+    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, replies: [], lat: parseFloat(req.body.latitude), lon: parseFloat(req.body.longitude) }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
       res.redirect(`/connect`)
@@ -119,13 +146,17 @@ module.exports = function (app, passport, db) {
   // locally --------------------------------
   // LOGIN ===============================
   // show the login form
+  app.get('/connectLocation', function (req, res) {
+    res.render('connectLocation.ejs', { message: req.flash('loginMessage') });
+  });
+
   app.get('/login', function (req, res) {
     res.render('login.ejs', { message: req.flash('loginMessage') });
   });
 
   // process the login form
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/connect', // redirect to the secure profile section
+    successRedirect: '/connectLocation', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
@@ -138,7 +169,7 @@ module.exports = function (app, passport, db) {
 
   // process the signup form
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/connect', // redirect to the secure profile section
+    successRedirect: '/connectLocation', // redirect to the secure profile section
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));

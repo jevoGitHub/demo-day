@@ -1,0 +1,85 @@
+/*
+==================================================
+Global Stylings
+==================================================
+*/
+
+html {
+    text-align: center;
+}
+
+body {
+    padding: 80px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(95.2deg, rgba(173, 252, 234, 1) 26.8%, rgba(192, 229, 246, 1) 64%);
+}
+
+.container {
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+/*
+  ==================================================
+  Layout
+  ==================================================
+  */
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 60px;
+    margin-bottom: 25px;
+}
+
+h3 {
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+ol {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+li {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/*
+  ==================================================
+  Stylings
+  ==================================================
+  */
+
+section {
+    background: white;
+    padding: 60px;
+}
+
+#break {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#sign-off {
+    margin-top: 50px;
+}
+
+.instructions {
+    margin-bottom: 40px;
+}

@@ -3,8 +3,9 @@
 // set up ======================================================================
 // get all the tools we need
 var express  = require('express');
+require('dotenv').config()
 var app      = express();
-var port     = process.env.PORT || 7610;
+var PORT     = process.env.PORT;
 const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -53,6 +54,6 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 mongoose.connect(configDB.url, (err, database) => {
-  app.listen(port);
-console.log('Connected to Port ' + port);
+  app.listen(PORT);
+console.log('Connected to Port ' + PORT);
   if (err) return console.log(err)})

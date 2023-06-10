@@ -7,32 +7,33 @@ body {
 }
 
 /*
-  ==================================================
-  Global Stylings
-  ==================================================
-  */
+==================================================
+Global Stylings
+==================================================
+*/
+
 html {
   text-align: center;
   border: none;
 }
 
 body {
-  padding-top: 80px;
   word-wrap: break-word;
   padding-top: 0;
   background: linear-gradient(95.2deg, rgba(173, 252, 234, 1) 26.8%, rgba(192, 229, 246, 1) 64%);
 }
 
 div.container {
-  width: 100%;
+  width: 95%;
   padding: 0;
 }
 
 /*
-  ==================================================
-  Layout
-  ==================================================
-  */
+==================================================
+Layout
+==================================================
+*/
+
 header {
   height: 125px;
   margin: 0;
@@ -46,7 +47,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 100px;
+  margin-top: 125px;
 }
 
 h3 {
@@ -65,7 +66,12 @@ h3 {
 }
 
 .row {
-  margin: none;
+  background: rgba(28, 131, 152, 0.3);
+  border-radius: 10px;
+  width: 85%;
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 50px;
 }
 
 p {
@@ -74,10 +80,11 @@ p {
 }
 
 /*
-  ==================================================
-  Sign In/Up Layout
-  ==================================================
-  */
+==================================================
+Sign In/Up Layout
+==================================================
+*/
+
 a[href="/login"],
 a[href="/signup"] {
   margin: auto;
@@ -93,18 +100,154 @@ button {
   margin-right: 20px;
 }
 
+a[href="/myprofile"]:before {
+  content: "// ";
+}
+
+a[href="/myprofile"] {
+  font-size: 3em;
+  width: 10%;
+}
+
+.wrapper {
+  margin: 3em 0;
+}
+
+a[href="/myprofile"],
+a[href="/myprofile"]:visited,
+a[href="/myprofile"]:hover,
+a[href="/myprofile"]:active {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+  transition: 0.5s color ease;
+  text-decoration: none;
+  color: rgb(43, 114, 185);
+  font-size: 2.5em;
+}
+
+a[href="/myprofile"]:hover {
+  color: rgb(52, 155, 255)
+}
+
+a[href="/myprofile"].before:before,
+a[href="/myprofile"].after:after {
+  content: "";
+  transition: 0.5s all ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+a[href="/myprofile"].before:before {
+  top: -0.25em;
+}
+
+a[href="/myprofile"].after:after {
+  bottom: -0.25em;
+}
+
+a[href="/myprofile"].before:before,
+a[href="/myprofile"].after:after {
+  height: 5px;
+  height: 0.35rem;
+  width: 0;
+  background: rgb(52, 155, 255)
+}
+
+.square {
+  box-sizing: border-box;
+  margin-left: -0.4em;
+  position: relative;
+  font-size: 2.5em;
+  overflow: hidden;
+}
+
+.square a[href="/myprofile"] {
+  position: static;
+  font-size: 100%;
+  padding: 0.2em 0.4em;
+}
+
+.square:before,
+.square:after {
+  content: "";
+  box-sizing: border-box;
+  transition: 0.25s all ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  width: 5px;
+  width: 0.35rem;
+  height: 0;
+  background: rgb(52, 155, 255)
+}
+
+.square:before {
+  left: 0;
+  bottom: -0.2em;
+}
+
+.square.individual:before {
+  transition-delay: 0.6s;
+}
+
+.square:after {
+  right: 0;
+  top: -0.2em;
+}
+
+.square.individual:after {
+  transition-delay: 0.2s;
+}
+
+.square a[href="/myprofile"]:before {
+  left: 0;
+  transition: 0.25s all ease;
+}
+
+.square a[href="/myprofile"]:after {
+  right: 0;
+  transition: 0.25s all ease;
+}
+
+.square.individual a:after {
+  transition: 0.25s all ease 0.4s;
+}
+
+.square:hover:before,
+.square:hover:after {
+  height: calc(100% + 0.4em);
+}
+
+.square:hover a[href="/myprofile"]:before,
+.square:hover a[href="/myprofile"]:after {
+  width: 100%;
+}
+
+
 /*
-  ==================================================
-  Connect Page Structure
-  ==================================================
-  */
+==================================================
+Connect Page Structure
+==================================================
+*/
+
+.messages>li {
+  list-style-type: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: left;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 li {
   list-style-type: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-  font-size: 1.5rem;
 }
 
 .message {
@@ -117,11 +260,20 @@ li {
   margin-top: 30px;
 }
 
+form {
+  margin-top: 30px;
+}
+
+form button {
+  font-size: 1.5rem;
+}
+
 /*
-  ==================================================
-  Stylings
-  ==================================================
-  */
+==================================================
+Stylings
+==================================================
+*/
+
 button {
   color: rgb(52, 155, 255);
   font-size: 1rem;
@@ -153,12 +305,8 @@ input[readonly] {
   display: none;
 }
 
-#comments {
-  text-decoration: underline;
-}
-
 #map {
-  width: 50%;
+  width: 70%;
   border: 8px groove rgb(6, 6, 6);
 }
 
@@ -171,73 +319,60 @@ a[href="/mysetting"] {
   font-size: 3rem;
 }
 
-h2:hover {
-  cursor: pointer;
-}
-
 /*
-  ==================================================
-  Imported Stylings
-  ==================================================
-  */
+==================================================
+Imported Stylings
+==================================================
+*/
+
 .msg-board {
-  --b: 3px;
-  /* border thickness */
-  --s: 8px;
-  /* size of the dashes */
-  --c1: rgb(75, 81, 79);
-  --c2: #080808;
-  background-color: white;
-  width: 65%;
+  width: 90%;
   margin: auto;
   margin-top: 30px;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
   position: relative;
-  padding: 20px;
   min-width: 200px;
-  ;
 }
 
-.msg-board::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: var(--b);
-  background:
-    repeating-conic-gradient(var(--c1) 0 25%, var(--c2) 0 50%) 0 0/var(--s) var(--s) round;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+.msg-board h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .center {
   position: absolute;
-  top:16%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 .center2 {
   position: absolute;
-  top:25%;
-  left:-50%;
-  transform: translate(-50%,-50%);
+  top: 25%;
+  left: -50%;
+  transform: translate(-50%, -50%);
 }
+
 .center3 {
   position: absolute;
-  top:15%;
-  left:200%;
-  transform: translate(-50%,-50%);
+  top: 15%;
+  left: 200%;
+  transform: translate(-50%, -50%);
 }
 
 #cloud {
   background: rgba(255, 255, 255);
-  width: 358px; 
+  width: 358px;
   height: 118px;
-  border-radius: 150px;	
-  box-shadow: 10px 10px rgba(0,0,0,0.2);
+  border-radius: 150px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
   animation: move 8s infinite;
   position: relative;
 }
@@ -270,12 +405,8 @@ h2:hover {
   0% {
     transform: translatex(0);
   }
+
   50% {
     transform: translatex(-40px);
   }
 }
-/*
-  ==================================================
-  Media Queries
-  ==================================================
-  */
